@@ -64,5 +64,11 @@ public class StudentServlet extends HttpServlet {
             DaoFactory.getStudentDao().update(student);
             response.sendRedirect("/student?action=index");
         }
+
+        if ("destroy".equals(action)) {
+            Student student = DaoFactory.getStudentDao().find(id);
+            DaoFactory.getStudentDao().delete(student);
+            response.sendRedirect("/student?action=index");
+        }
     }
 }

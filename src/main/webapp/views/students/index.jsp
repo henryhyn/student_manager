@@ -27,6 +27,7 @@
         <td>
             <a href="/student?action=show&id=<%= student.getId() %>">查看</a>
             <a href="/student?action=edit&id=<%= student.getId() %>">修改</a>
+            <a href="/student?action=destroy&id=<%= student.getId() %>">删除</a>
         </td>
     </tr>
     <%
