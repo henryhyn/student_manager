@@ -1,5 +1,8 @@
 package com.bestv.servlet;
 
+import com.bestv.database.dao.DaoFactory;
+import com.bestv.database.vo.Student;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +26,9 @@ public class StudentServlet extends HttpServlet {
     private void generate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String action = request.getParameter("action") != null ? request.getParameter("action") : "index";
         Integer id = request.getParameter("id") != null ? Integer.valueOf(request.getParameter("id")) : 0;
+        String name = request.getParameter("name")!=null ? request.getParameter("name") : "";
+        String number = request.getParameter("number")!=null ? request.getParameter("number") : "";
+        Integer classId = request.getParameter("class_id")!=null ? Integer.valueOf(request.getParameter("class_id")) : 0;
 
         if ("index".equals(action)) {
             response.sendRedirect("/views/students/index.jsp");
@@ -30,6 +36,19 @@ public class StudentServlet extends HttpServlet {
 
         if ("show".equals(action)) {
             response.sendRedirect("/views/students/show.jsp?id=" + id);
+        }
+
+        if ("new".equals(action)) {
+            response.sendRedirect("/views/students/form.jsp");
+        }
+
+        if ("create".equals(action)) {
+            Student student = new Student();
+            student.setName(name);
+            student.setNumber(number);
+            student.setClassId(classId);
+            DaoFactory.getStudentDao().save(student);
+            response.sendRedirect("/student?action=index");
         }
     }
 }

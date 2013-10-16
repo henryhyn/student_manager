@@ -32,6 +32,6 @@
         }
     %>
 </table>
-<a href="/">返回首页</a>
+<a href="/">返回首页</a> | <a href="/student?action=new">新增学生</a>
 </body>
 </html>
