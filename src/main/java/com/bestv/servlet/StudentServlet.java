@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,20 +13,18 @@ import java.io.PrintWriter;
  * To change this template use File | Settings | File Templates.
  */
 public class StudentServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         generate(request, response);
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         generate(request, response);
     }
 
-    private void generate(HttpServletRequest request, HttpServletResponse response) {
-        PrintWriter out;
-        try {
-            out = response.getWriter();
-            out.println("Hello world!");
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void generate(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String action = request.getParameter("action") != null ? request.getParameter("action") : "index";
+
+        if ("index".equals(action)) {
+            response.sendRedirect("/views/students/index.jsp");
         }
     }
 }
