@@ -50,5 +50,19 @@ public class StudentServlet extends HttpServlet {
             DaoFactory.getStudentDao().save(student);
             response.sendRedirect("/student?action=index");
         }
+
+        if ("edit".equals(action)) {
+            response.sendRedirect("/views/students/form.jsp?action=update&id=" + id);
+        }
+
+        if ("update".equals(action)) {
+            Student student = new Student();
+            student.setId(id);
+            student.setName(name);
+            student.setNumber(number);
+            student.setClassId(classId);
+            DaoFactory.getStudentDao().update(student);
+            response.sendRedirect("/student?action=index");
+        }
     }
 }
