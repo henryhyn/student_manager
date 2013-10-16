@@ -22,9 +22,14 @@ public class StudentServlet extends HttpServlet {
 
     private void generate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String action = request.getParameter("action") != null ? request.getParameter("action") : "index";
+        Integer id = request.getParameter("id") != null ? Integer.valueOf(request.getParameter("id")) : 0;
 
         if ("index".equals(action)) {
             response.sendRedirect("/views/students/index.jsp");
+        }
+
+        if ("show".equals(action)) {
+            response.sendRedirect("/views/students/show.jsp?id=" + id);
         }
     }
 }

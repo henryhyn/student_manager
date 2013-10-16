@@ -15,6 +15,7 @@
         <td>姓名</td>
         <td>学号</td>
         <td>班号</td>
+        <td>操作</td>
     </tr>
     <%
         for (Student student : students) {
@@ -23,6 +24,9 @@
         <td><%= student.getName() %></td>
         <td><%= student.getNumber() %></td>
         <td><%= student.getClassId() %></td>
+        <td>
+            <a href="/student?action=show&id=<%= student.getId() %>">查看</a>
+        </td>
     </tr>
     <%
         }
