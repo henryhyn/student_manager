@@ -1,13 +1,8 @@
 package com.bestv.database.dao;
 
-import org.hibernate.HibernateException;
-import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Query;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.metadata.ClassMetadata;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.Test;
 
 import java.util.Map;
@@ -20,28 +15,9 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class HibernateTest {
-    private static final SessionFactory ourSessionFactory;
-    private static final ServiceRegistry serviceRegistry;
-
-    static {
-        try {
-            Configuration configuration = new Configuration();
-            configuration.configure();
-
-            serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-            ourSessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        } catch (Throwable ex) {
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
-
-    public static Session getSession() throws HibernateException {
-        return ourSessionFactory.openSession();
-    }
-
     @Test
     public void test() throws Exception {
-        final Session session = getSession();
+        final Session session = HibernateDao.getSession();
         try {
             System.out.println("querying all the managed entities...");
             final Map metadataMap = session.getSessionFactory().getAllClassMetadata();

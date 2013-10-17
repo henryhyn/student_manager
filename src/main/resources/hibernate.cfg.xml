@@ -8,8 +8,8 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">mysql</property>
+        <property name="show_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
         <mapping class="com.bestv.database.vo.Student"/>
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>
 </hibernate-configuration>

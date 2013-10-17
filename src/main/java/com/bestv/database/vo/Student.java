@@ -1,6 +1,8 @@
 package com.bestv.database.vo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 /**
  * 节目类
@@ -17,6 +19,7 @@ public class Student {
 
     @javax.persistence.Column(name = "id")
     @javax.persistence.Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
