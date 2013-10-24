@@ -5,9 +5,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
 
@@ -19,23 +18,15 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class HibernateDao {
-    private static final SessionFactory ourSessionFactory;
-    private static final ServiceRegistry serviceRegistry;
+    private static final SessionFactory sessionFactory;
 
     static {
-        try {
-            Configuration configuration = new Configuration();
-            configuration.configure();
-
-            serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-            ourSessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        } catch (Throwable ex) {
-            throw new ExceptionInInitializerError(ex);
-        }
+        BeanFactory applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        sessionFactory = (SessionFactory)applicationContext.getBean("sessionFactory");
     }
 
     public static Session getSession() throws HibernateException {
-        return ourSessionFactory.openSession();
+        return sessionFactory.openSession();
     }
 
     public static ArrayList<Student> findAll() {
