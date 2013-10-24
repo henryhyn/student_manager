@@ -3,6 +3,7 @@ package com.bestv.database.vo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
 /**
  * 节目类
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
  * Time: 下午3:54
  */
 @Entity
+@Table(name = "student")
 public class Student {
     private Integer id;
     private String name;
