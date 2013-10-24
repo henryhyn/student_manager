@@ -4,17 +4,15 @@
     <display-name>StudentManager</display-name>
     <description>StudentManager</description>
 
-    <servlet>
-        <servlet-name>student</servlet-name>
-        <display-name>student</display-name>
-        <description>student</description>
-        <servlet-class>com.bestv.servlet.StudentServlet</servlet-class>
-    </servlet>
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
 
-    <servlet-mapping>
-        <servlet-name>student</servlet-name>
-        <url-pattern>/student</url-pattern>
-    </servlet-mapping>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
