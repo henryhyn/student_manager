@@ -25,15 +25,15 @@
         <td><%= student.getNumber() %></td>
         <td><%= student.getClassId() %></td>
         <td>
-            <a href="/student?action=show&id=<%= student.getId() %>">查看</a>
-            <a href="/student?action=edit&id=<%= student.getId() %>">修改</a>
-            <a href="/student?action=destroy&id=<%= student.getId() %>">删除</a>
+            <a href="/students/show?student.id=<%= student.getId() %>">查看</a>
+            <a href="/students/edit?student.id=<%= student.getId() %>">修改</a>
+            <a href="/students/destroy?student.id=<%= student.getId() %>">删除</a>
         </td>
     </tr>
     <%
         }
     %>
 </table>
-<a href="/">返回首页</a> | <a href="/student?action=new">新增学生</a>
+<a href="/">返回首页</a> | <a href="/students/add">新增学生</a>
 </body>
 </html>

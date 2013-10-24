@@ -11,4 +11,28 @@
             <result>/index.html</result>
         </action>
     </package>
+
+    <package name="students" namespace="/students" extends="default">
+        <action name="index" class="com.bestv.action.StudentAction" method="index">
+            <result>/views/students/index.jsp</result>
+        </action>
+        <action name="show" class="com.bestv.action.StudentAction" method="show">
+            <result>/views/students/show.jsp</result>
+        </action>
+        <action name="add" class="com.bestv.action.StudentAction" method="add">
+            <result name="input">/views/students/form.jsp</result>
+        </action>
+        <action name="create" class="com.bestv.action.StudentAction" method="create">
+            <result>/views/students/index.jsp</result>
+        </action>
+        <action name="edit" class="com.bestv.action.StudentAction" method="edit">
+            <result name="input">/views/students/form.jsp</result>
+        </action>
+        <action name="update" class="com.bestv.action.StudentAction" method="update">
+            <result>/views/students/index.jsp</result>
+        </action>
+        <action name="destroy" class="com.bestv.action.StudentAction" method="destroy">
+            <result>/views/students/index.jsp</result>
+        </action>
+    </package>
 </struts>
