@@ -25,6 +25,10 @@ public class BaseService<T> {
         return entity;
     }
 
+    public void load(T entity, Serializable id) {
+        baseDao.load(entity, id);
+    }
+
     public void save(T entity) {
         baseDao.save(entity);
     }

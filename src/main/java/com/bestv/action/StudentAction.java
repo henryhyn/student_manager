@@ -25,7 +25,7 @@ public class StudentAction extends ActionSupport {
     }
 
     public String show() {
-        student = studentService.find(student.getId());
+        studentService.load(student, student.getId());
         return SUCCESS;
     }
 
@@ -39,7 +39,7 @@ public class StudentAction extends ActionSupport {
     }
 
     public String edit() {
-        student = studentService.find(student.getId());
+        studentService.load(student, student.getId());
         return INPUT;
     }
 

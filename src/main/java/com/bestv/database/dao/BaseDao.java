@@ -39,6 +39,12 @@ public class BaseDao<T> {
         return entity;
     }
 
+    public void load(T entity, Serializable id) {
+        Session session = getSession();
+        session.load(entity, id);
+        session.close();
+    }
+
     public void save(T entity) {
         Session session = getSession();
         session.beginTransaction();
