@@ -5,6 +5,7 @@ import com.bestv.database.dao.StudentDao;
 import com.bestv.database.vo.Student;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 节目 DAO 层类
@@ -15,26 +16,31 @@ import java.util.ArrayList;
 public class StudentDaoImpl implements StudentDao {
     @Override
     public ArrayList<Student> findAll() {
-        return HibernateDao.findAll();
+        List<Object> objects = HibernateDao.getInstance().findAll(Student.class);
+        ArrayList<Student> students = new ArrayList<Student>();
+        for (Object object : objects) {
+            students.add((Student)object);
+        }
+        return students;
     }
 
     @Override
     public Student find(Integer id) {
-        return HibernateDao.find(id);
+        return (Student) HibernateDao.getInstance().find(Student.class, id);
     }
 
     @Override
     public void save(Student student) {
-        HibernateDao.save(student);
+        HibernateDao.getInstance().save(student);
     }
 
     @Override
     public void update(Student student) {
-        HibernateDao.update(student);
+        HibernateDao.getInstance().update(student);
     }
 
     @Override
     public void delete(Student student) {
-        HibernateDao.delete(student);
+        HibernateDao.getInstance().delete(student);
     }
 }

@@ -17,7 +17,7 @@ import java.util.Map;
 public class HibernateTest {
     @Test
     public void test() throws Exception {
-        final Session session = HibernateDao.getSession();
+        final Session session = HibernateDao.getInstance().getSession();
         try {
             System.out.println("querying all the managed entities...");
             final Map metadataMap = session.getSessionFactory().getAllClassMetadata();

@@ -1,55 +1,53 @@
 package com.bestv.database.dao;
 
-import com.bestv.database.vo.Student;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
  * User: henry
- * Date: 13-10-17
- * Time: 下午3:37
+ * Date: 13-10-25
+ * Time: 下午12:08
  * To change this template use File | Settings | File Templates.
  */
 public class HibernateDao {
-    private static final SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
-    static {
+    private static HibernateDao ourInstance = new HibernateDao();
+
+    public static HibernateDao getInstance() {
+        return ourInstance;
+    }
+
+    private HibernateDao() {
         BeanFactory applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         sessionFactory = (SessionFactory)applicationContext.getBean("sessionFactory");
     }
 
-    public static Session getSession() throws HibernateException {
+    public Session getSession() {
         return sessionFactory.openSession();
     }
 
-    public static ArrayList<Student> findAll() {
-        ArrayList<Student> result = new ArrayList<Student>();
-        Session session = HibernateDao.getSession();
-        Query query = session.createQuery("from Student");
-        for (Object object : query.list()) {
-            result.add((Student)object);
-        }
-        return result;
+    public List<Object> findAll(Class aClass) {
+        Session session = getSession();
+        List<Object> objects = session.createQuery("from " + aClass.getName()).list();
+        session.close();
+        return objects;
     }
 
-    public static Student find(Integer id) {
-        Student result = null;
-        Session session = HibernateDao.getSession();
-        Query query = session.createQuery("from Student where id=" + id);
-        for (Object object : query.list()) {
-            result = (Student)object;
-        }
-        return result;
+    public Object find(Class aClass, Serializable serializable) {
+        Session session = getSession();
+        Object object = session.get(aClass, serializable);
+        session.close();
+        return object;
     }
 
-    public static void save(Object object) {
+    public void save(Object object) {
         Session session = getSession();
         session.beginTransaction();
         session.save(object);
@@ -57,7 +55,7 @@ public class HibernateDao {
         session.close();
     }
 
-    public static void update(Object object) {
+    public void update(Object object) {
         Session session = getSession();
         session.beginTransaction();
         session.update(object);
@@ -65,7 +63,7 @@ public class HibernateDao {
         session.close();
     }
 
-    public static void delete(Object object) {
+    public void delete(Object object) {
         Session session = getSession();
         session.beginTransaction();
         session.delete(object);
