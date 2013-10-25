@@ -1,10 +1,10 @@
 <%@ page import="com.bestv.database.vo.Student" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="com.bestv.database.dao.DaoFactory" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-    ArrayList<Student> students = DaoFactory.getStudentDao().findAll();
+    List<Student> students = DaoFactory.getStudentDao().findAll();
     request.setAttribute("students", students);
 %>
 <html>

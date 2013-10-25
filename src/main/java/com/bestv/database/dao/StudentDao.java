@@ -2,22 +2,13 @@ package com.bestv.database.dao;
 
 import com.bestv.database.vo.Student;
 
-import java.util.ArrayList;
-
 /**
- * 节目 DAO 层接口
+ * Created with IntelliJ IDEA.
  * User: henry
- * Date: 13-9-11
- * Time: 下午3:58
+ * Date: 13-10-25
+ * Time: 下午2:58
+ * To change this template use File | Settings | File Templates.
  */
-public interface StudentDao {
-    public ArrayList<Student> findAll();
+public class StudentDao extends BaseDao<Student> {
 
-    public Student find(Integer id);
-
-    public void save(Student student);
-
-    public void update(Student student);
-
-    public void delete(Student student);
 }

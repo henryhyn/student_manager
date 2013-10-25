@@ -3,7 +3,7 @@ package com.bestv.database.dao;
 import com.bestv.database.vo.Student;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class StudentDaoTest {
     @Test
     public void test() {
-        ArrayList<Student> students = DaoFactory.getStudentDao().findAll();
+        List<Student> students = DaoFactory.getStudentDao().findAll();
         for (Student student : students) {
             System.out.println(student.getName());
         }

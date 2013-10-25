@@ -1,7 +1,5 @@
 package com.bestv.database.dao;
 
-import com.bestv.database.dao.impl.StudentDaoImpl;
-
 /**
  * DAO 工厂
  * User: henry
@@ -9,7 +7,11 @@ import com.bestv.database.dao.impl.StudentDaoImpl;
  * Time: 下午4:02
  */
 public class DaoFactory {
+    private static StudentDao studentDao = null;
     public static StudentDao getStudentDao() {
-        return new StudentDaoImpl();
+        if (studentDao == null) {
+            studentDao = new StudentDao();
+        }
+        return studentDao;
     }
 }
