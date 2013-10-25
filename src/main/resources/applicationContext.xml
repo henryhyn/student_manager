@@ -36,7 +36,7 @@
     <bean id="studentService" class="com.bestv.service.StudentService">
         <property name="baseDao" ref="studentDao"/>
     </bean>
-    <bean id="studentAction" class="com.bestv.action.StudentAction">
+    <bean id="studentAction" class="com.bestv.action.StudentAction" scope="prototype">
         <property name="studentService" ref="studentService"/>
     </bean>
 </beans>
