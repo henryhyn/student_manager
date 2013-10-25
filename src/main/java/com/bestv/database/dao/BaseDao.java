@@ -63,7 +63,7 @@ public class BaseDao<T> {
         session.close();
     }
 
-    public Session getSession() {
+    private Session getSession() {
         return sessionFactory.openSession();
     }
 

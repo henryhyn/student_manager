@@ -34,7 +34,7 @@ public class StudentAction extends ActionSupport {
     }
 
     public String create() {
-        studentService.create(getStudent());
+        studentService.create(student);
         return SUCCESS;
     }
 

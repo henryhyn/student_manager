@@ -30,10 +30,6 @@ public class Student {
         this.id = id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @javax.persistence.Column(name = "name")
     @javax.persistence.Basic
     public String getName() {
