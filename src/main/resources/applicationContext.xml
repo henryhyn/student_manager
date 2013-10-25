@@ -18,7 +18,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>com.bestv.database.vo</value>
+                <value>com.bestv.database.model</value>
             </list>
         </property>
         <property name="hibernateProperties">

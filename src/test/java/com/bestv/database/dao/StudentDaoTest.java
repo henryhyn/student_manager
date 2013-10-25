@@ -1,6 +1,6 @@
 package com.bestv.database.dao;
 
-import com.bestv.database.vo.Student;
+import com.bestv.database.model.Student;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.metadata.ClassMetadata;

@@ -1,4 +1,4 @@
-<%@ page import="com.bestv.database.vo.Student" %>
+<%@ page import="com.bestv.database.model.Student" %>
 <%@ page import="com.bestv.database.dao.DaoFactory" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

@@ -1,7 +1,7 @@
 package com.bestv.action;
 
 import com.bestv.database.dao.DaoFactory;
-import com.bestv.database.vo.Student;
+import com.bestv.database.model.Student;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**

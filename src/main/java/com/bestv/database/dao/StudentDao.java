@@ -1,6 +1,6 @@
 package com.bestv.database.dao;
 
-import com.bestv.database.vo.Student;
+import com.bestv.database.model.Student;
 
 /**
  * Created with IntelliJ IDEA.

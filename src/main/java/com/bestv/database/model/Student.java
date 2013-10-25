@@ -1,4 +1,4 @@
-package com.bestv.database.vo;
+package com.bestv.database.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

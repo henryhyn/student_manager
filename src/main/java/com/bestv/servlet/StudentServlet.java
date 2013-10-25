@@ -1,7 +1,7 @@
 package com.bestv.servlet;
 
 import com.bestv.database.dao.DaoFactory;
-import com.bestv.database.vo.Student;
+import com.bestv.database.model.Student;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
