@@ -1,12 +1,5 @@
-<%@ page import="com.bestv.database.model.Student" %>
-<%@ page import="com.bestv.database.dao.DaoFactory" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    List<Student> students = DaoFactory.getStudentDao().findAll();
-    request.setAttribute("students", students);
-%>
 <html>
 <head>
     <title>学生管理系统 | 学生列表</title>
@@ -19,7 +12,7 @@
         <td>班号</td>
         <td>操作</td>
     </tr>
-    <c:forEach items="${students}" var="student">
+    <c:forEach items="${studentList}" var="student">
         <tr>
             <td>${student.name}</td>
             <td>${student.number}</td>

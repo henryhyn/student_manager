@@ -1,8 +1,10 @@
 package com.bestv.action;
 
-import com.bestv.database.dao.DaoFactory;
 import com.bestv.database.model.Student;
+import com.bestv.service.StudentManager;
 import com.opensymphony.xwork2.ActionSupport;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,13 +15,17 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class StudentAction extends ActionSupport {
     private Student student;
+    private List<Student> studentList;
+
+    private StudentManager studentManager;
 
     public String index() {
+        studentList = studentManager.findAll();
         return SUCCESS;
     }
 
     public String show() {
-        setStudent(DaoFactory.getStudentDao().find(student.getId()));
+        student = studentManager.find(student.getId());
         return SUCCESS;
     }
 
@@ -28,22 +34,22 @@ public class StudentAction extends ActionSupport {
     }
 
     public String create() {
-        DaoFactory.getStudentDao().save(getStudent());
+        studentManager.create(getStudent());
         return SUCCESS;
     }
 
     public String edit() {
-        setStudent(DaoFactory.getStudentDao().find(student.getId()));
+        student = studentManager.find(student.getId());
         return INPUT;
     }
 
     public String update() {
-        DaoFactory.getStudentDao().update(getStudent());
+        studentManager.update(student);
         return SUCCESS;
     }
 
     public String destroy() {
-        DaoFactory.getStudentDao().delete(getStudent());
+        studentManager.destroy(student);
         return SUCCESS;
     }
 
@@ -53,5 +59,21 @@ public class StudentAction extends ActionSupport {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
+
+    public StudentManager getStudentManager() {
+        return studentManager;
+    }
+
+    public void setStudentManager(StudentManager studentManager) {
+        this.studentManager = studentManager;
     }
 }

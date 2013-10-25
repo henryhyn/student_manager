@@ -29,4 +29,14 @@
             </props>
         </property>
     </bean>
+
+    <bean id="studentDao" class="com.bestv.database.dao.StudentDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="studentManager" class="com.bestv.service.StudentManager">
+        <property name="studentDao" ref="studentDao"/>
+    </bean>
+    <bean id="studentAction" class="com.bestv.action.StudentAction">
+        <property name="studentManager" ref="studentManager"/>
+    </bean>
 </beans>

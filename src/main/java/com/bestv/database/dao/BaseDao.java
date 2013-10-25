@@ -2,8 +2,6 @@ package com.bestv.database.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -17,12 +15,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class BaseDao<T> {
-    private static SessionFactory sessionFactory;
-
-    static {
-        BeanFactory applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        sessionFactory = (SessionFactory) applicationContext.getBean("sessionFactory");
-    }
+    private SessionFactory sessionFactory;
 
     private Class entityClass;
 
@@ -72,6 +65,14 @@ public class BaseDao<T> {
 
     public Session getSession() {
         return sessionFactory.openSession();
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     public Class getEntityClass() {
