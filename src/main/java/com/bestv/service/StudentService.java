@@ -12,7 +12,7 @@ import java.util.List;
  * Time: 下午4:40
  * To change this template use File | Settings | File Templates.
  */
-public class StudentManager {
+public class StudentService {
     private StudentDao studentDao;
 
     public List<Student> findAll() {

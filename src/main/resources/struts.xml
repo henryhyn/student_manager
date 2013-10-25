@@ -27,16 +27,16 @@
             <result name="input">/views/students/form.jsp</result>
         </action>
         <action name="create" class="com.bestv.action.StudentAction" method="create">
-            <result>/views/students/index.jsp</result>
+            <result type="chain">index</result>
         </action>
         <action name="edit" class="com.bestv.action.StudentAction" method="edit">
             <result name="input">/views/students/form.jsp</result>
         </action>
         <action name="update" class="com.bestv.action.StudentAction" method="update">
-            <result>/views/students/index.jsp</result>
+            <result type="chain">index</result>
         </action>
         <action name="destroy" class="com.bestv.action.StudentAction" method="destroy">
-            <result>/views/students/index.jsp</result>
+            <result type="chain">index</result>
         </action>
     </package>
 </struts>

@@ -1,7 +1,7 @@
 package com.bestv.action;
 
 import com.bestv.database.model.Student;
-import com.bestv.service.StudentManager;
+import com.bestv.service.StudentService;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.List;
@@ -17,15 +17,15 @@ public class StudentAction extends ActionSupport {
     private Student student;
     private List<Student> studentList;
 
-    private StudentManager studentManager;
+    private StudentService studentService;
 
     public String index() {
-        studentList = studentManager.findAll();
+        studentList = studentService.findAll();
         return SUCCESS;
     }
 
     public String show() {
-        student = studentManager.find(student.getId());
+        student = studentService.find(student.getId());
         return SUCCESS;
     }
 
@@ -34,22 +34,22 @@ public class StudentAction extends ActionSupport {
     }
 
     public String create() {
-        studentManager.create(getStudent());
+        studentService.create(getStudent());
         return SUCCESS;
     }
 
     public String edit() {
-        student = studentManager.find(student.getId());
+        student = studentService.find(student.getId());
         return INPUT;
     }
 
     public String update() {
-        studentManager.update(student);
+        studentService.update(student);
         return SUCCESS;
     }
 
     public String destroy() {
-        studentManager.destroy(student);
+        studentService.destroy(student);
         return SUCCESS;
     }
 
@@ -69,11 +69,11 @@ public class StudentAction extends ActionSupport {
         this.studentList = studentList;
     }
 
-    public StudentManager getStudentManager() {
-        return studentManager;
+    public StudentService getStudentService() {
+        return studentService;
     }
 
-    public void setStudentManager(StudentManager studentManager) {
-        this.studentManager = studentManager;
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
     }
 }
