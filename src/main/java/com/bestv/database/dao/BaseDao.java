@@ -22,19 +22,19 @@ public class BaseDao<T> {
     public BaseDao() {
         ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
         Class aClass = (Class) type.getActualTypeArguments()[0];
-        setEntityClass(aClass);
+        entityClass = aClass;
     }
 
     public List<T> findAll() {
         Session session = getSession();
-        List<T> list = session.createQuery("from " + getEntityClass().getName()).list();
+        List<T> list = session.createQuery("from " + entityClass.getName()).list();
         session.close();
         return list;
     }
 
     public T find(Serializable id) {
         Session session = getSession();
-        T t = (T) session.get(getEntityClass(), id);
+        T t = (T) session.get(entityClass, id);
         session.close();
         return t;
     }
@@ -73,13 +73,5 @@ public class BaseDao<T> {
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-    }
-
-    public Class getEntityClass() {
-        return entityClass;
-    }
-
-    public void setEntityClass(Class entityClass) {
-        this.entityClass = entityClass;
     }
 }

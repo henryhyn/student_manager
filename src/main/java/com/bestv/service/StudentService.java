@@ -25,7 +25,7 @@ public class StudentService {
         return student;
     }
 
-    public boolean create(Student student) {
+    public boolean save(Student student) {
         studentDao.save(student);
         return true;
     }
@@ -35,7 +35,7 @@ public class StudentService {
         return true;
     }
 
-    public boolean destroy(Student student) {
+    public boolean delete(Student student) {
         studentDao.delete(student);
         return true;
     }

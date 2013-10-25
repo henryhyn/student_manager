@@ -34,7 +34,7 @@ public class StudentAction extends ActionSupport {
     }
 
     public String create() {
-        studentService.create(student);
+        studentService.save(student);
         return SUCCESS;
     }
 
@@ -49,7 +49,7 @@ public class StudentAction extends ActionSupport {
     }
 
     public String destroy() {
-        studentService.destroy(student);
+        studentService.delete(student);
         return SUCCESS;
     }
 
