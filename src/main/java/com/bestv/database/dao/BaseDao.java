@@ -34,31 +34,31 @@ public class BaseDao<T> {
 
     public T find(Serializable id) {
         Session session = getSession();
-        T t = (T) session.get(entityClass, id);
+        T entity = (T) session.get(entityClass, id);
         session.close();
-        return t;
+        return entity;
     }
 
-    public void save(T t) {
+    public void save(T entity) {
         Session session = getSession();
         session.beginTransaction();
-        session.save(t);
+        session.save(entity);
         session.getTransaction().commit();
         session.close();
     }
 
-    public void update(T t) {
+    public void update(T entity) {
         Session session = getSession();
         session.beginTransaction();
-        session.update(t);
+        session.update(entity);
         session.getTransaction().commit();
         session.close();
     }
 
-    public void delete(T t) {
+    public void delete(T entity) {
         Session session = getSession();
         session.beginTransaction();
-        session.delete(t);
+        session.delete(entity);
         session.getTransaction().commit();
         session.close();
     }
