@@ -22,6 +22,11 @@ public class StudyAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String el() {
+        yield = "/views/study/el.jsp";
+        return SUCCESS;
+    }
+
     public String getYield() {
         return yield;
     }

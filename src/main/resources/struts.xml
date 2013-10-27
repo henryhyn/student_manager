@@ -49,5 +49,8 @@
         <action name="datetime" class="com.bestv.action.StudyAction" method="datetime">
             <result>/views/layout/application.jsp</result>
         </action>
+        <action name="el" class="com.bestv.action.StudyAction" method="el">
+            <result>/views/layout/application.jsp</result>
+        </action>
     </package>
 </struts>
