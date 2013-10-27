@@ -41,4 +41,13 @@
             <result type="chain">index</result>
         </action>
     </package>
+
+    <package name="study" namespace="/study" extends="default">
+        <action name="index" class="com.bestv.action.StudyAction" method="index">
+            <result>/views/layout/application.jsp</result>
+        </action>
+        <action name="datetime" class="com.bestv.action.StudyAction" method="datetime">
+            <result>/views/layout/application.jsp</result>
+        </action>
+    </package>
 </struts>
