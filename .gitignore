@@ -1,8 +1,4 @@
-out
-target
-src/main/webapp/WEB-INF/classes
-src/main/webapp/WEB-INF/lib
-*.swp
-*~
-.project
 .idea
+target
+*.iml
+.DS_Store

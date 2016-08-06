@@ -1,19 +1,31 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Henry
+  Date: 15/9/4
+  Time: 14:30
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>学生管理系统 | ${student.id>0 ? "更新信息" : "新增学生"}</title>
+    <%@ include file="/views/layouts/head.htm" %>
 </head>
 <body>
-<form action="/students/${student.id>0 ? "update" : "create"}" method="post">
-    <input hidden name="student.id" value="${student.id}" />
-    姓名: <input name="student.name" value="${student.name}" /> <br/>
-    学号: <input name="student.number" value="${student.number}" /> <br/>
-    班级: <select name="student.classId">
-        <option value="1" ${student.classId==1 ? "selected" : ""} >一班</option>
-        <option value="2" ${student.classId==2 ? "selected" : ""} >二班</option>
-        <option value="3" ${student.classId==3 ? "selected" : ""} >三班</option>
-    </select>
-    <button type="submit">${student.id>0 ? "更新信息" : "新增学生"}</button>
-</form>
+<form:form action="/students" method="post" modelAttribute="student">
+    <div><form:hidden path="id"/></div>
+    <div>姓名: <form:input path="name"/></div>
+    <div>学号: <form:input path="number"/></div>
+    <div>
+        班级: <form:select path="classId">
+        <form:option value="1">一班</form:option>
+        <form:option value="2">二班</form:option>
+        <form:option value="3">三班</form:option>
+    </form:select>
+    </div>
+    <di><form:button>${student.id>0 ? "更新信息" : "新增学生"}</form:button></di>
+</form:form>
 </body>
 </html>
